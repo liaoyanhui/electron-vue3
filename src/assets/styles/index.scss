@@ -1,0 +1,558 @@
+@import "./variables.module.scss";
+@import "./mixin.scss";
+@import "./transition.scss";
+@import "./element-ui.scss";
+@import "./sidebar.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: pingFangSC, PingFang SC,Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+  height: auto;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+div:focus {
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+.h100{
+  height: 100%;
+}
+.w100{
+  width: 100%;
+}
+.block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inlineBlock {
+  display: block;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+/**
+ * 通用css样式布局处理
+ */
+
+/** 基础通用 **/
+
+
+$color: (
+  "black": $black,
+  "blue": $blue,
+	"green": $green,
+	"333": #333,
+	"999": #999,
+	"666": #666,
+	'fff': #fff,
+	"gray": $gray,
+  'red': #ff0000,
+  "red2":#DE5153,
+  "fff65": rgba(255,255,255,.65),
+  "fff06": rgba(255,255,255,.06),
+  'warning': #e6a23c,
+  'ADADAD': #ADADAD
+  // 'success'
+);
+
+$spacing-base-size: 1px;
+$base-font-size: 1px;
+$font-sizes: (
+  10: 10,
+  12: 12,
+  14: 14,
+  16: 16,
+  18: 18,
+  20: 20
+);
+
+//spacing
+$spacing-types: (
+  m: margin,
+  p: padding
+);
+
+$spacing-desctions: (
+  t: top,
+  b: bottom,
+  l: left,
+  r: right
+);
+$spacing-sizes: (
+  0: 0,
+  2: 2,
+  4: 4,
+  6: 6,
+  8: 8,
+  10: 10,
+  12: 12,
+  14: 14,
+  16: 16,
+  18: 18,
+  20: 20,
+  22: 22,
+  24: 24,
+  26: 26,
+  30: 30,
+  40:40,
+  50:50
+);
+
+
+//color-fff color:#fff
+//bg-fff    background-fff background:#fff;
+@each $colorKey, $color in $color {
+  .color-#{$colorKey} {
+    color: $color;
+  }
+	.bg-#{$colorKey} {
+    background-color: $color;
+  }
+  @each $desctionsKey, $desction in $spacing-desctions  {
+
+    .border-#{$desctionsKey}-#{$colorKey} {
+      border-#{$desction} : 1px solid $color!important;
+    }
+    .border-2-#{$desctionsKey}-#{$colorKey} {
+      border-#{$desction} : 2px solid  $color!important;
+    }
+  }
+  .border-#{$colorKey} {
+    border: 1px solid $color!important;
+   
+  }
+  .border-2-#{$colorKey} {
+    border: 2px solid $color!important;
+  }
+}
+
+
+.border-1{
+  border: 1px solid var(--el-border-color)!important
+}
+.border-b{
+  border-bottom: 1px solid var(--el-border-color)!important
+}
+.border-t{
+  border-top: 1px solid var(--el-border-color)!important
+}
+.border-l{
+  border-left: 1px solid var(--el-border-color)!important
+}
+.border-r{
+  border-right: 1px solid var(--el-border-color)!important
+}
+
+.isactive{
+  border-color: var(--el-color-primary)!important;
+  color:var(--el-color-primary)!important;
+}
+
+//text
+@each $var in (left, center, right) {
+  .text-#{$var} {
+    text-align: $var;
+  }
+}
+.nowrap{
+  white-space: nowrap;
+}
+
+.d-line{
+  display: inline-block;
+}
+//flex
+.d-flex {
+  display: flex;
+}
+.inline-flex{
+  display: inline-flex;
+}
+.flex-1{
+  flex: 1;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+$flex-jc: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around
+);
+
+//jc-center  justify-content:center
+//jc-between  justify-content:space-between
+
+@each $key, $value in $flex-jc {
+  .jc-#{$key} {
+    justify-content: $value;
+  }
+}
+
+//al-center  align-items:picture-in-picture
+@each $key, $value in $flex-jc {
+  .al-#{$key} {
+    align-items: $value;
+  }
+}
+
+
+/**字体大小 font-size */
+// fs-10  font-size:10px
+// fs-12  font-size:12px
+@each $sizeKey, $size in $font-sizes {
+  .fs-#{$sizeKey} {
+    font-size: $size * $base-font-size;
+  }
+}
+
+
+//m-4 margin:4px;
+//p-4 pading:4px;
+@each $typesKey, $type in $spacing-types {
+  @each $sizeKey, $size in $spacing-sizes {
+    .#{$typesKey}-#{$sizeKey} {
+      #{$type}: $size * $spacing-base-size;
+    }
+  }
+}
+.radius{
+  border-radius: 50%;
+}
+.radius-2{
+  border-radius: 2px;
+}
+.radius-4{
+  border-radius: 4px;
+}
+.radius-8{
+  border-radius: 8px;
+}
+
+
+//mx-4  margin-left:4px margin-right:4px; 
+//px-4  ....
+//my-4  margin-top:4px;margin-bottom:4px;
+//py-4  ...
+
+@each $typesKey, $type in $spacing-types {
+  @each $sizeKey, $size in $spacing-sizes {
+    .#{$typesKey}x-#{$sizeKey} {
+      #{$type}-left: $size * $spacing-base-size;
+      #{$type}-right: $size * $spacing-base-size;
+    }
+    .#{$typesKey}y-#{$sizeKey} {
+      #{$type}-top: $size * $spacing-base-size;
+      #{$type}-bottom: $size * $spacing-base-size;
+    }
+  }
+}
+
+//mt-4 margin-top:4px;
+//mb-4 margin-bottom:4px;
+@each $typesKey, $type in $spacing-types {
+  @each $desctionsKey, $desction in $spacing-desctions {
+    @each $sizeKey, $size in $spacing-sizes {
+      .#{$typesKey}#{$desctionsKey}-#{$sizeKey} {
+        #{$type}-#{$desction}: $size * $spacing-base-size;
+      }
+    }
+  }
+}
+
+
+
+.fw-400 {
+  font-weight: 400;
+}
+.fw-500 {
+  font-weight: 500;
+}
+.fw-600 {
+  font-weight: 600;
+}
+.fw-700 {
+  font-weight: 700;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+
+
+.form-header {
+  font-size: 15px;
+  color: #6379bb;
+  border-bottom: 1px solid #ddd;
+  margin: 8px 10px 25px 10px;
+  padding-bottom: 5px;
+}
+
+/** 表格布局 **/
+.pagination-container {
+  position: relative;
+  height: 25px;
+  margin-bottom: 10px;
+  margin-top: 15px;
+  padding: 10px 20px !important;
+}
+
+// .el-dialog .pagination-container {
+//   position: static !important;
+// }
+
+/* tree border */
+.tree-border {
+  margin-top: 5px;
+  border: 1px solid #e5e6e7;
+  background: #ffffff none;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.pagination-container .el-pagination {
+  right: 10px;
+  position: absolute;
+}
+
+@media (max-width: 768px) {
+  .pagination-container .el-pagination > .el-pagination__jump {
+    display: none !important;
+  }
+  .pagination-container .el-pagination > .el-pagination__sizes {
+    display: none !important;
+  }
+}
+
+
+.list-group-striped > .list-group-item {
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.list-group {
+  padding-left: 0px;
+  list-style: none;
+}
+
+.list-group-item {
+  border-bottom: 1px solid #e7eaec;
+  border-top: 1px solid #e7eaec;
+  margin-bottom: -1px;
+  padding: 11px 0px;
+  font-size: 13px;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.card-box {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+
+
+
+.img-lg {
+  width: 120px;
+  height: 120px;
+}
+
+
+.avatar-upload-preview {
+  position: absolute;
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px #ccc;
+  overflow: hidden;
+}
+
+/* 拖拽列样式 */
+.sortable-ghost {
+  opacity: 0.8;
+  color: #fff !important;
+  background: #42b983 !important;
+}
+
+/* 表格右侧工具栏样式 */
+.top-right-btn {
+  margin-left: auto;
+}
+
+[class*=" el-icon-"],
+[class^="el-icon-"] {
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.el-sub-menu [class^="el-icon-"] {
+  vertical-align: middle;
+  margin-right: 5px;
+  width: 24px;
+  text-align: center;
+  font-size: 18px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+
+.el-1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+.el-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-break: break-all;
+}
+.el-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  word-break: break-all;
+}
+.p-r {
+  position: relative;
+}
+.p-a {
+  position: absolute;
+}
+.p-f {
+  position: fixed;
+}
+.line-1{
+  line-height: 1;
+}
+
+.over-scorll {
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.over-scorll-x {
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.over-scorll-y {
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+

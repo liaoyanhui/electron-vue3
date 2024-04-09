@@ -1,0 +1,113 @@
+{
+  "name": "cbank",
+  "version": "1.0.1",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package-mac": "electron-builder --mac",
+    "package-win64": "electron-builder --win --x64"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^22.3.27",
+    "electron-builder": "^22.14.13"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.1.2",
+    "electron-log": "^5.0.3",
+    "electron-updater": "^6.1.7"
+  },
+  "build": {
+    "asar": true,
+    "appId": "cbank",
+    "productName": "cbank",
+    "directories": {
+      "app": "./",
+      "buildResources": "resources",
+      "output": "packages"
+    },
+    "extends": null,
+    "mac": {
+      "artifactName": "${productName}_${version}.${ext}",
+      "target": {
+        "arch": "universal",
+        "target": "dmg"
+      },
+      "extendInfo": {
+        "CFBundleURLSchemes": [
+          "cbank"
+        ]
+      }
+    },
+    "dmg": {
+      "title": "cbank",
+      "iconSize": 100,
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "window": {
+        "width": 500,
+        "height": 500
+      }
+    },
+    "files": [
+      "**/*"
+    ],
+    "win": {
+      "icon": "./icon/icon.ico",
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "artifactName": "${productName}-${version}.win.${ext}",
+      "verifyUpdateCodeSignature": false,
+      "signingHashAlgorithms": [
+        "sha256",
+        "sha1"
+      ],
+      "signDlls": true,
+      "rfc3161TimeStampServer": "http://timestamp.comodoca.com/rfc3161",
+      "timeStampServer": "http://timestamp.digicert.com"
+    },
+    "nsis": {
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "oneClick": false,
+      "perMachine": true,
+      "warningsAsErrors": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "https://image.hzxyle.com/cbank"
+      }
+    ],
+    "releaseInfo": {
+      "releaseNotes": "ceshi"
+    }
+  },
+  "babel": {
+    "plugins": [
+      [
+        "component",
+        {
+          "libraryName": "element-ui",
+          "styleLibraryName": "theme-chalk"
+        }
+      ]
+    ]
+  }
+}

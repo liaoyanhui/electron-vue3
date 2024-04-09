@@ -1,0 +1,80 @@
+// base color
+$black: #323745;
+$blue: #324157;
+$gray: #545F6A;
+$light-blue: #3A71A8;
+$red: #C03639;
+$pink: #E65D6E;
+$green: #2ad1b7;
+$tiffany: #4AB7BD;
+$yellow: #ff8e08;
+$panGreen: #30B08F;
+
+
+$base-top-menu-height: 70px;
+$base-sidebar-width: 200px; //侧边栏宽度
+$table-header-bg-color: #6A6B78; //表格头部背景色
+
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+:root {
+  color-scheme: dark;
+  --el-bg-color: #323745;  //背景色
+  --el-color-black: #323745;
+  --el-text-color-regular: #fff;
+  --el-text-color-primary: #fff; //默认字体颜色
+  --el-color-primary: #2ad1b7; 
+  --el-color-primary-light-3: #55dac5;
+  --el-color-primary-light-5: #7fe3d4;
+  --el-color-primary-light-7: #aaede2;
+  --el-color-primary-light-8: #caf3ed;
+  --el-color-primary-light-9: rgba(42,209,183,0.16);
+  --el-color-primary-dark-2: #060606;
+  --el-fill-color: #323745;
+  --el-fill-color-light: #3b3e4a;
+  --el-fill-color-blank: #323745;
+  --el-dialog-bg-color: #323745; 
+  --el-input-bg-color: #6A6B78;
+  --el-input-text-color: #fff;
+  --el-border-color: #595B68;
+  --el-border-color-lighter: #6A6B78; //
+  --el-border-color-light:#6A6B78; //input disable 边框
+  --el-bg-color-overlay: #323745;
+  --el-menu-bg-color: #222634; //导航栏背景色
+  --el-menu-hover-bg-color: #323745; //导航栏hover
+  --el-mask-color: rgba(52, 52, 56, 0.6);
+  --el-dialog-padding-primary: 0;
+  --el-tree-text-color: #2ad1b7; 
+  --el-font-size-base: 16px;
+  --el-border-color-extra-light:#6A6B78;
+}
+
+  // color-scheme: dark;
+  // --el-bg-color: rgba(34, 38, 52,.8);  //背景色 323745
+  // --el-color-black: #323745;
+  // --el-text-color-regular: #fff;
+  // --el-text-color-primary: #fff; //默认字体颜色
+  // --el-color-primary: #2ad1b7; 
+  // --el-color-primary-light-3: #55dac5;
+  // --el-color-primary-light-5: #7fe3d4;
+  // --el-color-primary-light-7: #aaede2;
+  // --el-color-primary-light-8: #caf3ed;
+  // --el-color-primary-light-9: rgba(42,209,183,0.16);
+  // --el-color-primary-dark-2: #060606;
+  // --el-fill-color: rgba(34, 38, 52,.8); // #323745;
+  // --el-fill-color-light: #3b3e4a;
+  // --el-fill-color-blank: rgba(34, 38, 52,.8);// #323745;
+  // --el-dialog-bg-color: rgb(50, 55, 69,0.8); 
+  // --el-input-bg-color: #6A6B78;
+  // --el-input-text-color: #fff;
+  // --el-border-color: #595B68;
+  // --el-border-color-lighter: #6A6B78; //
+  // --el-border-color-light:#6A6B78; //input disable 边框
+  // --el-bg-color-overlay:  rgba(34, 38, 52,.8);
+  // --el-menu-bg-color: rgba(34, 38, 52,.8); //导航栏背景色
+  // --el-menu-hover-bg-color:rgba(34, 38, 52,.8)//导航栏hover
+  // --el-table-bg-color: rgba(34, 38, 52,.8)
+  // --el-mask-color: rgba(52, 52, 56, 1);
+  // --el-dialog-padding-primary: 0;
+  // --el-tree-text-color: #2ad1b7; 
+  // --el-font-size-base: 16px;
+  // --el-border-color-extra-light:#6A6B78;
